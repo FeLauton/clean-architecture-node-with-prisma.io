@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "src/*": ["src/*"],
+      "src/data/*": ["data/*"],
+      "src/domain/*": ["domain/*"],
+      "src/infra/*": ["infra/*"],
+      "src/main/*": ["main/*"],
+      "src/presentation/*": ["presentation/*"],
+      "src/validation/*": ["validation/*"],
+      "tests/*": ["../tests/*"]
+    },
+    "rootDirs": ["src", "tests"],
+    "outDir": "dist"
+  },
+  "include": ["src", "tests"]
+}

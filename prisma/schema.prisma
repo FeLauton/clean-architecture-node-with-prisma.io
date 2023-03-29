@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model accounts {
+  id       Int     @id(map: "PK_accounts") @default(autoincrement())
+  name     String
+  email    String
+  password String
+  token    String?
+  role     String?
+}
+
+model logs {
+  id         Int      @id(map: "PK_logs") @default(autoincrement())
+  stack      String
+  created_at DateTime
+}

@@ -1,0 +1,16 @@
+version: "3"
+services:
+  api:
+    container_name: clean-architecture-with-prisma-io
+    image: node:14
+    working_dir: /usr/src/clean-architecture-with-prisma.io
+    restart: always
+    command: bash -c "npm install --omit=dev && npm run debug"
+    environment:
+      - DATABASE_URL=sqlserver://192.168.1.11:1433;database=chekLists;integratedSecurity=false;username=SA;password=123@fellipe;trustServerCertificate=true
+    volumes:
+      - ./dist/:/usr/src/clean-architecture-with-prisma.io/dist/
+      - ./package.json:/usr/src/clean-architecture-with-prisma.io/package.json
+    ports:
+      - "5050:5050"
+      - "9222:9222"
