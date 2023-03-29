@@ -1,5 +1,5 @@
-import { DbLoadAccountByToken } from "data/usecases/db-load-account-by-token";
-import { LoadAccountByToken } from "domain/usecases/load-account-by-token";
+import { DbLoadAccountByToken } from "data/usecases";
+import { LoadAccountByToken } from "domain/usecases";
 import { JwtAdapter } from "infra/criptography/jwt-adapter";
 import { AccountPrismaRepository } from "infra/db/prisma";
 import { env } from "main/config/env";

@@ -1,10 +1,9 @@
-import { AddAccountRepository } from "data/protocols/db/add-account-repository";
-import { LoadAccountByTokenRepository } from "data/protocols/db/load-account-by-token-repository";
-import { UpdateAccessTokenRepository } from "data/protocols/db/update-access-token-repository";
 import {
-  AddAccountParams,
-  LoadAccountByEmailRepository,
-} from "data/usecases/db-add-account-protocols";
+  AddAccountRepository,
+  LoadAccountByTokenRepository,
+  UpdateAccessTokenRepository,
+} from "data/protocols/db";
+import { AddAccountParams, LoadAccountByEmailRepository } from "data/usecases";
 import { AccountModel } from "domain/models/account";
 import { mockAccountModel } from "tests/domain/mocks";
 

@@ -1,12 +1,12 @@
-import { Authentication } from "domain/usecases/authentication";
-import { LoginController } from "presentation/controllers/login-controller";
+import { Authentication } from "domain/usecases";
+import { LoginController } from "presentation/controllers";
 import { MissingParamError } from "presentation/errors";
 import {
   badRequest,
   ok,
   serverError,
   unauthorized,
-} from "presentation/helpers/http/http-helpers";
+} from "presentation/helpers";
 import { HttpRequest, Validation } from "presentation/protocols";
 import { throwError } from "tests/domain/mocks";
 import { mockAuthentication } from "tests/presentation/mocks";

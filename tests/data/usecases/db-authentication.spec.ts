@@ -1,9 +1,10 @@
-import { Encrypter } from "data/protocols/criptography/encrypter";
-import { HashComparer } from "data/protocols/criptography/hash-compare";
-import { LoadAccountByEmailRepository } from "data/protocols/db/load-account-by-email-repository";
-import { UpdateAccessTokenRepository } from "data/protocols/db/update-access-token-repository";
-import { DbAuthentication } from "data/usecases/db-authentication";
-import { Authentication } from "domain/usecases/authentication";
+import { Encrypter, HashComparer } from "data/protocols/criptography";
+import {
+  LoadAccountByEmailRepository,
+  UpdateAccessTokenRepository,
+} from "data/protocols/db";
+import { DbAuthentication } from "data/usecases";
+import { Authentication } from "domain/usecases";
 import {
   mockEncrypter,
   mockHashComparer,

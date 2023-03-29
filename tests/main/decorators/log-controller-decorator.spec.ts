@@ -1,10 +1,9 @@
-import { LogErrorRepository } from "data/protocols/db/log-error-repository";
+import { LogErrorRepository } from "data/protocols/db";
 import { LogControllerDecorator } from "main/decorators/log-controller-decorator";
-import { ok, serverError } from "presentation/helpers/http/http-helpers";
-import { Controller } from "presentation/protocols/controller";
-import { HttpRequest, HttpResponse } from "presentation/protocols/http";
-import { mockLogErrorRepository } from "tests/data/mocks/mock-db-log";
-import { mockAccountModel } from "tests/domain/mocks/mock-account";
+import { ok, serverError } from "presentation/helpers";
+import { Controller, HttpRequest, HttpResponse } from "presentation/protocols";
+import { mockLogErrorRepository } from "tests/data/mocks";
+import { mockAccountModel } from "tests/domain/mocks";
 
 const mockFakeServerError = (): HttpResponse => {
   const fakeError = new Error();

@@ -1,5 +1,5 @@
-import { DbAddAccount } from "data/usecases/db-add-account";
-import { AddAccount } from "domain/usecases/add-account";
+import { DbAddAccount } from "data/usecases";
+import { AddAccount } from "domain/usecases";
 import { BcryptAdapter } from "infra/criptography/encrypt-adapter";
 import { AccountPrismaRepository } from "infra/db/prisma";
 

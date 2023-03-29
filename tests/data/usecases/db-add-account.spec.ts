@@ -1,9 +1,9 @@
-import { DbAddAccount } from "data/usecases/db-add-account";
 import {
   AddAccountRepository,
+  DbAddAccount,
   Hasher,
   LoadAccountByEmailRepository,
-} from "data/usecases/db-add-account-protocols";
+} from "data/usecases";
 import {
   mockAddAccountRepository,
   mockHasher,

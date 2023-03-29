@@ -1,6 +1,6 @@
-import { LogPrismaRepository } from "infra/db/prisma/log-prisma-repository";
+import { LogPrismaRepository } from "infra/db/prisma";
 import { LogControllerDecorator } from "main/decorators/log-controller-decorator";
-import { Controller } from "presentation/protocols/controller";
+import { Controller } from "presentation/protocols";
 
 export const makeLogControllerDecorator = (
   controller: Controller

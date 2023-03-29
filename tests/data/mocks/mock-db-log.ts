@@ -1,4 +1,4 @@
-import { LogErrorRepository } from "data/protocols/db/log-error-repository";
+import { LogErrorRepository } from "data/protocols/db";
 
 export const mockLogErrorRepository = (): LogErrorRepository => {
   class LogErrorRepositoryStub implements LogErrorRepository {

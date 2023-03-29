@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { noCache } from "main/middlewares/no-cache";
+import { noCache } from "main/middlewares";
 import { serve, setup } from "swagger-ui-express";
 import swaggerConfig from "./docs";
 

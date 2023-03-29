@@ -1,10 +1,6 @@
-import { LoadAccountByToken } from "domain/usecases/load-account-by-token";
+import { LoadAccountByToken } from "domain/usecases";
 import { AccessDeniedError } from "presentation/errors/access-denied-error";
-import {
-  forbidden,
-  ok,
-  serverError,
-} from "presentation/helpers/http/http-helpers";
+import { forbidden, ok, serverError } from "presentation/helpers";
 import { AuthMiddleware } from "presentation/middlewares/auth-middleware";
 import { throwError } from "tests/domain/mocks";
 import { mockLoadAccountByToken } from "tests/presentation/mocks";

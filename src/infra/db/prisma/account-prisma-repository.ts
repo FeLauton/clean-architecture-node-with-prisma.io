@@ -1,9 +1,11 @@
-import { AddAccountRepository } from "data/protocols/db/add-account-repository";
-import { LoadAccountByEmailRepository } from "data/protocols/db/load-account-by-email-repository";
-import { LoadAccountByTokenRepository } from "data/protocols/db/load-account-by-token-repository";
-import { UpdateAccessTokenRepository } from "data/protocols/db/update-access-token-repository";
+import {
+  AddAccountRepository,
+  LoadAccountByEmailRepository,
+  LoadAccountByTokenRepository,
+  UpdateAccessTokenRepository,
+} from "data/protocols/db";
 import { AccountModel } from "domain/models/account";
-import { AddAccountParams } from "domain/usecases/add-account";
+import { AddAccountParams } from "domain/usecases";
 import { Prisma, PrismaHelper } from "infra/db/prisma";
 
 export class AccountPrismaRepository

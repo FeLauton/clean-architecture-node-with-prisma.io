@@ -1,12 +1,10 @@
-import { Encrypter } from "data/protocols/criptography/encrypter";
-import { HashComparer } from "data/protocols/criptography/hash-compare";
-import { LoadAccountByEmailRepository } from "data/protocols/db/load-account-by-email-repository";
-import { AuthenticationModel } from "domain/models/authentication";
+import { Encrypter, HashComparer } from "data/protocols/criptography";
 import {
-  Authentication,
-  AuthenticationParams,
-} from "domain/usecases/authentication";
-import { UpdateAccessTokenRepository } from "src/data/protocols/db/update-access-token-repository";
+  LoadAccountByEmailRepository,
+  UpdateAccessTokenRepository,
+} from "data/protocols/db";
+import { AuthenticationModel } from "domain/models/authentication";
+import { Authentication, AuthenticationParams } from "domain/usecases";
 
 export class DbAuthentication implements Authentication {
   constructor(
