@@ -3,7 +3,7 @@ import { LogControllerDecorator } from "main/decorators/log-controller-decorator
 import { ok, serverError } from "presentation/helpers";
 import { Controller, HttpRequest, HttpResponse } from "presentation/protocols";
 import { mockLogErrorRepository } from "tests/data/mocks";
-import { mockAccountModel } from "tests/domain/mocks";
+import { mockUserModel } from "tests/domain/mocks";
 
 const mockFakeServerError = (): HttpResponse => {
   const fakeError = new Error();
@@ -23,7 +23,7 @@ const mockFakeRequest = (): HttpRequest => ({
 const mockController = (): Controller => {
   class ControllerStub implements Controller {
     async handle(): Promise<HttpResponse> {
-      return Promise.resolve(ok(mockAccountModel()));
+      return Promise.resolve(ok(mockUserModel()));
     }
   }
   return new ControllerStub();
@@ -60,7 +60,7 @@ describe("logControllerDecorator", () => {
   test("Should return the same result of controller", async () => {
     const { sut } = makeSut();
     const httpResponse = await sut.handle(mockFakeRequest());
-    expect(httpResponse).toEqual(ok(mockAccountModel()));
+    expect(httpResponse).toEqual(ok(mockUserModel()));
   });
 
   test("Should call LogErrorRepository with correct error if controller returns a server error", async () => {

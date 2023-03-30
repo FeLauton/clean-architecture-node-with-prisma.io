@@ -1,4 +1,4 @@
-import { AddAccount, Authentication } from "domain/usecases";
+import { AddUser, Authentication } from "domain/usecases";
 import { SignUpController } from "presentation/controllers";
 import {
   EmailInUseError,
@@ -8,7 +8,7 @@ import {
 import { badRequest, forbidden, ok, serverError } from "presentation/helpers";
 import { HttpRequest, Validation } from "presentation/protocols";
 import { throwError } from "tests/domain/mocks";
-import { mockAddAccount, mockAuthentication } from "tests/presentation/mocks";
+import { mockAddUser, mockAuthentication } from "tests/presentation/mocks";
 import { mockValidation } from "tests/validation/mocks";
 
 const mockRequest = (): HttpRequest => ({
@@ -22,32 +22,32 @@ const mockRequest = (): HttpRequest => ({
 
 interface SutTypes {
   sut: SignUpController;
-  addAccountStub: AddAccount;
+  addUserStub: AddUser;
   validationStub: Validation;
   authenticationStub: Authentication;
 }
 
 const makeSut = (): SutTypes => {
-  const addAccountStub = mockAddAccount();
+  const addUserStub = mockAddUser();
   const validationStub = mockValidation();
   const authenticationStub = mockAuthentication();
   const sut = new SignUpController(
-    addAccountStub,
+    addUserStub,
     validationStub,
     authenticationStub
   );
   return {
     sut,
-    addAccountStub,
+    addUserStub,
     validationStub,
     authenticationStub,
   };
 };
 
 describe("SignUp Controller", () => {
-  test("Should call AddAccount with correct values", async () => {
-    const { sut, addAccountStub } = makeSut();
-    const addSpy = jest.spyOn(addAccountStub, "add");
+  test("Should call AddUser with correct values", async () => {
+    const { sut, addUserStub } = makeSut();
+    const addSpy = jest.spyOn(addUserStub, "add");
     await sut.handle(mockRequest());
     expect(addSpy).toHaveBeenCalledWith({
       name: "any_name",
@@ -56,20 +56,18 @@ describe("SignUp Controller", () => {
     });
   });
 
-  test("Should return 500 if addAccount throws", async () => {
-    const { sut, addAccountStub } = makeSut();
-    jest.spyOn(addAccountStub, "add").mockImplementationOnce(throwError);
+  test("Should return 500 if addUser throws", async () => {
+    const { sut, addUserStub } = makeSut();
+    jest.spyOn(addUserStub, "add").mockImplementationOnce(throwError);
     const httpResponse = await sut.handle(mockRequest());
     const fakeError = new Error();
     fakeError.stack = "any_stack";
     expect(httpResponse).toEqual(serverError(new ServerError("")));
   });
 
-  test("Should return 403 if addAccount returns null", async () => {
-    const { sut, addAccountStub } = makeSut();
-    jest
-      .spyOn(addAccountStub, "add")
-      .mockReturnValueOnce(Promise.resolve(null));
+  test("Should return 403 if addUser returns null", async () => {
+    const { sut, addUserStub } = makeSut();
+    jest.spyOn(addUserStub, "add").mockReturnValueOnce(Promise.resolve(null));
     const httpResponse = await sut.handle(mockRequest());
     expect(httpResponse).toEqual(forbidden(new EmailInUseError()));
   });

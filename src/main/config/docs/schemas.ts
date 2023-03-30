@@ -6,7 +6,7 @@ import {
 } from "./schemas/";
 
 export default {
-  account: accountSchema,
+  user: accountSchema,
   loginParams: loginParamsSchema,
   signUpParams: signUpParamsSchema,
   error: errorSchema,

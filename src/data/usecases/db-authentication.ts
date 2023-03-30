@@ -1,6 +1,6 @@
 import { Encrypter, HashComparer } from "data/protocols/criptography";
 import {
-  LoadAccountByEmailRepository,
+  LoadUserByEmailRepository,
   UpdateAccessTokenRepository,
 } from "data/protocols/db";
 import { AuthenticationModel } from "domain/models/authentication";
@@ -8,7 +8,7 @@ import { Authentication, AuthenticationParams } from "domain/usecases";
 
 export class DbAuthentication implements Authentication {
   constructor(
-    private readonly loadAccountByEmailRepository: LoadAccountByEmailRepository,
+    private readonly loadUserByEmailRepository: LoadUserByEmailRepository,
     private readonly hashComparerHashComparer: HashComparer,
     private readonly encrypter: Encrypter,
     private readonly updateAccessTokenRepository: UpdateAccessTokenRepository
@@ -16,21 +16,21 @@ export class DbAuthentication implements Authentication {
   async auth(
     authentication: AuthenticationParams
   ): Promise<AuthenticationModel> {
-    const account = await this.loadAccountByEmailRepository.loadAccountByEmail(
+    const user = await this.loadUserByEmailRepository.loadUserByEmail(
       authentication.email
     );
-    if (account) {
+    if (user) {
       const isValid = await this.hashComparerHashComparer.compare(
         authentication.password,
-        account.password
+        user.password
       );
       if (isValid) {
-        const accessToken = await this.encrypter.encrypt(account.id);
+        const accessToken = await this.encrypter.encrypt(user.id);
         await this.updateAccessTokenRepository.updateAccessToken(
-          account.id,
+          user.id,
           accessToken
         );
-        return { accessToken, name: account.name };
+        return { accessToken, name: user.name };
       }
     }
     return null;

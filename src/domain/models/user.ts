@@ -1,4 +1,4 @@
-export type AccountModel = {
+export type UserModel = {
   id: string;
   name: string;
   email: string;

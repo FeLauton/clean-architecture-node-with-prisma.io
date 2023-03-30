@@ -9,7 +9,7 @@ describe("Login Routes", () => {
   });
 
   beforeEach(async () => {
-    await Prisma.accounts.deleteMany();
+    await Prisma.users.deleteMany();
   });
 
   afterAll(async () => {
@@ -32,7 +32,7 @@ describe("Login Routes", () => {
   describe("POST /login", () => {
     test("Should return 200 on login", async () => {
       const hashedPassword = await hash("123", 12);
-      await Prisma.accounts.create({
+      await Prisma.users.create({
         data: {
           name: "Fellipe",
           email: "fellipe.lauton@gmail.com",

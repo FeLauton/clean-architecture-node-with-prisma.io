@@ -1,6 +1,6 @@
 import { makeLogControllerDecorator } from "main/factories/decorators/log-controller-decorator-factory";
 import {
-  makeDbAddAccountFactory,
+  makeDbAddUserFactory,
   makeDbAuthenticationFactory,
 } from "main/factories/usecases";
 import { SignUpController } from "presentation/controllers";
@@ -9,7 +9,7 @@ import { makeSignUpValidation } from "./signup-validation-factory";
 
 export const makeSignUpController = (): Controller => {
   const controller = new SignUpController(
-    makeDbAddAccountFactory(),
+    makeDbAddUserFactory(),
     makeSignUpValidation(),
     makeDbAuthenticationFactory()
   );

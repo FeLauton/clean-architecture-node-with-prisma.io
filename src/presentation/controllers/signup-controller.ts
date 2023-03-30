@@ -1,4 +1,4 @@
-import { AddAccount, Authentication } from "domain/usecases";
+import { AddUser, Authentication } from "domain/usecases";
 import { EmailInUseError } from "presentation/errors";
 import { badRequest, forbidden, ok, serverError } from "presentation/helpers";
 import {
@@ -10,7 +10,7 @@ import {
 
 export class SignUpController implements Controller {
   constructor(
-    private readonly addAccount: AddAccount,
+    private readonly addUser: AddUser,
     private readonly validation: Validation,
     private readonly authentication: Authentication
   ) {}
@@ -21,12 +21,12 @@ export class SignUpController implements Controller {
         return badRequest(error);
       }
       const { name, email, password } = httpRequest.body;
-      const account = await this.addAccount.add({
+      const user = await this.addUser.add({
         name,
         email,
         password,
       });
-      if (!account) {
+      if (!user) {
         return forbidden(new EmailInUseError());
       }
 

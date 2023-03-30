@@ -1,11 +1,11 @@
-import { accounts, PrismaClient } from "@prisma/client";
-import { AccountModel } from "domain/models/account";
+import { PrismaClient, users } from "@prisma/client";
+import { UserModel } from "domain/models/user";
 
 export const Prisma = new PrismaClient();
 
 export const PrismaHelper = {
-  accountMap: (account: accounts): AccountModel => {
-    const { id, role, token, ...rest } = account;
+  userMap: (user: users): UserModel => {
+    const { id, role, token, ...rest } = user;
     return { id: String(id), ...rest };
   },
 };
