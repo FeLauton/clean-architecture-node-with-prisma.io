@@ -1,2 +1,3 @@
-# clean-architecture-with-prisma.io
-Clean architecture with prisma.io using SOLID concepts
+# clean-architecture-node-with-prisma.io
+
+Clean architecture nodejs with prisma.io using SOLID concepts
