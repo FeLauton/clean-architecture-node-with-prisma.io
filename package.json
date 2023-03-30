@@ -1,6 +1,6 @@
 {
   "name": "clean-architecture-with-prisma.io",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Clean architecture with prisma.io using SOLID concepts",
   "main": "index.js",
   "scripts": {
