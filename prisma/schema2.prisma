@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client2"
+}
+
+datasource TCLOUD {
+  provider = "sqlserver"
+  url      = env("DATABASE_TCLOUD")
+}
+
+model x {
+  id         Int      @id(map: "PK_logs") @default(autoincrement())
+  stack      String
+  created_at DateTime
+}

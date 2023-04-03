@@ -42,7 +42,7 @@ export class UserPrismaRepository
         token,
         OR: [
           {
-            role,
+            role: "user",
           },
           { role: "admin" },
         ],

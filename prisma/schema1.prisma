@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/client1"
 }
 
 datasource db {
@@ -16,8 +17,10 @@ model users {
   role     String?
 }
 
-model logs {
-  id         Int      @id(map: "PK_logs") @default(autoincrement())
+model error_logs {
+  id         Int      @id @default(autoincrement())
   stack      String
   created_at DateTime
+
+  @@map("errorLogs")
 }
