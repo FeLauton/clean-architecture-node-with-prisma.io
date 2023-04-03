@@ -17,10 +17,10 @@ model users {
   role     String?
 }
 
-model error_logs {
+model errorLogs {
   id         Int      @id @default(autoincrement())
-  stack      String
+  stack      String   @db.NVarChar(max)
   created_at DateTime
 
-  @@map("errorLogs")
+  @@map("error_logs")
 }

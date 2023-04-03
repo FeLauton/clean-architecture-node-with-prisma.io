@@ -7,7 +7,7 @@ import {
 import { PrismaClient as PrismaClient2 } from "../../../../prisma/generated/client2";
 
 export const Prisma = new PrismaClient1();
-const Prisma2 = new PrismaClient2();
+const PrismaTCloud = new PrismaClient2();
 
 export const PrismaHelper = {
   getProduct: async (
@@ -16,7 +16,7 @@ export const PrismaHelper = {
     offset: number,
     limit: number
   ): Promise<Product> => {
-    const result: any = await Prisma2.$queryRaw`
+    const result: any = await PrismaTCloud.$queryRaw`
     SELECT
       RTRIM(SB1PROD.B1_COD) as code,
       RTRIM(SB1PROD.B1_DESC) as 'description',
@@ -73,7 +73,7 @@ export const PrismaHelper = {
   getProductCodeBySerialNumber: async (
     serialNumber: string
   ): Promise<string> => {
-    const productCode: any = await Prisma2.$queryRaw`
+    const productCode: any = await PrismaTCloud.$queryRaw`
     SELECT RTRIM(AA3_CODPRO) AS code
     FROM AA3010 (NOLOCK)
     WHERE AA3_NUMSER = ${serialNumber}`;

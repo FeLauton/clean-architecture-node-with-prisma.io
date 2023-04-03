@@ -6,7 +6,7 @@ describe("Log Prisma Repository", () => {
     await Prisma.$connect();
   });
   beforeEach(async () => {
-    await Prisma.logs.deleteMany();
+    await Prisma.errorLogs.deleteMany();
   });
 
   afterAll(async () => {
@@ -20,7 +20,7 @@ describe("Log Prisma Repository", () => {
   test("Should create an error log on success", async () => {
     const sut = makeSut();
     await sut.logError("any_error");
-    const count = await Prisma.logs.count();
+    const count = await Prisma.errorLogs.count();
     expect(count).toBe(1);
   });
 });
