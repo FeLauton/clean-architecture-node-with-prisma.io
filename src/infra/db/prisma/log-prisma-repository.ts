@@ -3,7 +3,7 @@ import { Prisma } from "./prisma-helper";
 
 export class LogPrismaRepository implements LogErrorRepository {
   async logError(stack: string): Promise<void> {
-    await Prisma.logs.create({
+    await Prisma.errorLogs.create({
       data: { stack: stack, created_at: new Date() },
     });
   }

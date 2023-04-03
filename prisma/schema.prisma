@@ -16,8 +16,10 @@ model users {
   role     String?
 }
 
-model logs {
-  id         Int      @id(map: "PK_logs") @default(autoincrement())
+model errorLogs {
+  id         Int      @id @default(autoincrement())
   stack      String
   created_at DateTime
+
+  @@map("error_logs")
 }
