@@ -1,6 +1,7 @@
 import {
   badRequest,
   forbidden,
+  noContent,
   notFound,
   serverError,
   unauthorized,
@@ -16,4 +17,5 @@ export default {
   unauthorized,
   notFound,
   forbidden,
+  noContent,
 };

@@ -8,19 +8,9 @@ export class DbLoadProductBySerialNumber
     private readonly loadProductBySerialNumberRepository: LoadProductBySerialNumberRepository
   ) {}
 
-  async loadBySerialNumber(
-    code: string,
-    table: string,
-    offset?: number,
-    limit?: number
-  ): Promise<Product> {
+  async loadBySerialNumber(code: string): Promise<Product> {
     const product: Product =
-      await this.loadProductBySerialNumberRepository.loadBySerialNumber(
-        code,
-        table,
-        offset,
-        limit
-      );
+      await this.loadProductBySerialNumberRepository.loadBySerialNumber(code);
     if (product) {
       return product;
     }

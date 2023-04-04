@@ -7,11 +7,11 @@ export class ProductByCodeController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const { code, table } = httpRequest.params;
+      const { code, priceTable } = httpRequest.params;
       const { offset, limit } = httpRequest.query;
       const product = await this.loadProduct.loadByCode(
         code,
-        table,
+        priceTable,
         Number(offset),
         Number(limit)
       );

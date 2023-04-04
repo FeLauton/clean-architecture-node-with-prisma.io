@@ -8,12 +8,12 @@ import { auth } from "main/middlewares";
 
 export default (router: Router): void => {
   router.get(
-    "/product_by_code/:code/:table/",
+    "/product_by_code/:code/:priceTable",
     auth,
     adaptRoute(makeProductByCodeController())
   );
   router.get(
-    "/product_by_serial_number/:serialNumber/:table/",
+    "/product_by_serial_number/:serialNumber",
     auth,
     adaptRoute(makeProductBySerialNumberController())
   );

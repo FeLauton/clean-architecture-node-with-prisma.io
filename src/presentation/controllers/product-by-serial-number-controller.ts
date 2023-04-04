@@ -9,13 +9,9 @@ export class ProductBySerialNumberController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const { serialNumber, table } = httpRequest.params;
-      const { offset, limit } = httpRequest.query;
+      const { serialNumber } = httpRequest.params;
       const product = await this.LoadProductBySerialNumber.loadBySerialNumber(
-        serialNumber,
-        table,
-        Number(offset),
-        Number(limit)
+        serialNumber
       );
       if (!product) {
         return noContent();

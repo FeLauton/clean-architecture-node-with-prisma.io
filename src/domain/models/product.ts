@@ -1,10 +1,10 @@
 export type Product = {
   code: string;
   description: string;
-  price: number;
-  components: Components[];
-  nextPage: boolean;
-  totalComponents: number;
+  price?: number;
+  components?: Components[];
+  nextPage?: boolean;
+  totalComponents?: number;
 };
 
 type Components = {

@@ -8,18 +8,13 @@ import { PrismaHelper } from "./prisma-helper";
 export class ProductPrismaRepository
   implements LoadProductByCodeRepository, LoadProductBySerialNumberRepository
 {
-  async loadBySerialNumber(
-    serialNumber: string,
-    table: string,
-    offset: number,
-    limit: number
-  ): Promise<Product> {
+  async loadBySerialNumber(serialNumber: string): Promise<Product> {
     const productCode = await PrismaHelper.getProductCodeBySerialNumber(
       serialNumber
     );
 
     if (productCode) {
-      const product = await this.loadByCode(productCode, table, offset, limit);
+      const product = await this.loadByCode(productCode, "", 0, 100);
       return product;
     }
     return null;
@@ -27,10 +22,10 @@ export class ProductPrismaRepository
 
   async loadByCode(
     code: string,
-    table: string,
+    priceTable: string,
     offset: number = 0,
     limit: number = 100
   ): Promise<Product> {
-    return await PrismaHelper.getProduct(code, table, offset, limit);
+    return await PrismaHelper.getProduct(code, priceTable, offset, limit);
   }
 }

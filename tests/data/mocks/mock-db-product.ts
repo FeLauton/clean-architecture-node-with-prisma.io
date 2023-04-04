@@ -38,7 +38,7 @@ export const mockLoadProductByCodeRepository =
     {
       async loadByCode(
         code: string,
-        table: string,
+        priceTable: string,
         offset?: number,
         limit?: number
       ): Promise<Product> {
@@ -55,12 +55,7 @@ export const mockLoadProductBySerialNumberRepository =
     class LoadProductBySerialNumberRepositoryStub
       implements LoadProductBySerialNumberRepository
     {
-      async loadBySerialNumber(
-        code: string,
-        table: string,
-        offset?: number,
-        limit?: number
-      ): Promise<Product> {
+      async loadBySerialNumber(code: string): Promise<Product> {
         {
           return Promise.resolve(mockProduct());
         }

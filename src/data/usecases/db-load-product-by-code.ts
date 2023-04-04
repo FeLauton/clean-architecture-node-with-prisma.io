@@ -8,13 +8,13 @@ export class DbLoadProductByCode implements LoadProductByCodeRepository {
 
   async loadByCode(
     code: string,
-    table: string,
+    priceTable: string,
     offset?: number,
     limit?: number
   ): Promise<Product> {
     const product: Product = await this.loadProductByCodeRepository.loadByCode(
       code,
-      table,
+      priceTable,
       offset,
       limit
     );
